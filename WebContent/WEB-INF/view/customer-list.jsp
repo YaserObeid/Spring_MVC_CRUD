@@ -14,9 +14,9 @@
 
     <title>Customer List</title>
   </head>
-  <body>
+  <body class="bg-light">
       <!--nav -->
-    <div class="container">
+    <div class="container bg-secondary py-3 mt-5">
         <nav class="navbar navbar-dark bg-dark my-5">
             <div class="container-fluid">
               <a class="navbar-brand">Customer List</a>
@@ -29,7 +29,7 @@
           </nav>
           <!--/nav-->
           <!--table-->
-          <table class="table table-secondary table-striped">
+          <table class="table table-dark table-striped">
             <thead>
               <tr class="table-dark">
                 <th scope="col">ID</th>
