@@ -1,0 +1,28 @@
+work steps:
+- copy the msql connector into \WEB-INF\lib
+- make TestDbServlet class to test the connection to db.
+- copy the config xml file into \WEB-INF
+- copy javax.servlet jar_file (2 files) into \WEB-INF\lib.
+- from latest releas sptin: copy all file in \libs intto \WEB-INF\lib
+- from latest releas hibernate: copy jar files from \lib\required into \WEB-INF\lib
+- one additional set of Hibernate JAR files: for our connection pooling
+    from \lib\optionatl\c3po into \WEB-INF\lib
+- For Java 9 and higher, you need to additional JAR files. 
+
+            You need to download the following JAR files:
+
+            javax.activation-1.2.0.jar 
+
+            jaxb-api-2.3.0.jar 
+
+            jaxb-core-2.3.0.jar 
+
+            jaxb-impl-2.3.0.jar
+
+- Configration for Spring an Hibernate inside the Spring MVC configuration file:
+in my example spring-mvc-crud-demo-servlet.xml
+
+    1- define our database dataSource connection pool.
+    2- setup the Hibernate session factory.
+    3- setup the Hibernate transaction manager.
+    4- enable configuration of transactional annotations.
