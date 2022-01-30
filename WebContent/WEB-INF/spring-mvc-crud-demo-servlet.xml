@@ -64,7 +64,7 @@
 	<tx:annotation-driven transaction-manager="myTransactionManager" />
 	
 	<!-- define resources directory -->
-	<mvc:resources location="/resources" mapping="/resources/**"/>
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
 
 </beans>
 
