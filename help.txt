@@ -26,3 +26,9 @@ in my example spring-mvc-crud-demo-servlet.xml
     2- setup the Hibernate session factory.
     3- setup the Hibernate transaction manager.
     4- enable configuration of transactional annotations.
+
+Write the code:
+- Craete the Entity Classes (customer)
+- create DAO interface
+- create DAO implementation & inject the sessionFactory as dependency
+
