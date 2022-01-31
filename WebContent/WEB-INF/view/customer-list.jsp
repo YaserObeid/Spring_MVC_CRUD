@@ -68,15 +68,23 @@
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">E-Mail</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
             <c:forEach var="c" items="${customers}">
+            <!-- create update link with parameter (customer id) -->
+            <c:url var="updateLink" value="/customer/showFormForUpdate">
+            	<c:param name="customerId" value="${c.id}" />
+            </c:url>
            	 <tr>
                 <th scope="row" >${c.id }</th>
                 <td>${c.firstName}</td>
                 <td>${c.lastName}</td>
                 <td>${c.email}</td>
+                <td>
+                <a href="${updateLink}" ><i class="text-success bi bi-pencil-square"></i></a>
+                </td>
               </tr>
             	
             </c:forEach>
