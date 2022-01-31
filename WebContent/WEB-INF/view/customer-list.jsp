@@ -2,7 +2,7 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
+   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,19 +30,40 @@
     <!--nav -->
         <nav id="nav" class="navbar navbar-light bg-light my-5">
             <div class="container-fluid">
-              <a class="navbar-brand">Customer List</a>
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" 
-                       placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
+              <a class="navbar-brand h1" href="#">Customer List</a>
+              <!--toggler-->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+               <!--/toggler-->
+               <!--links-->
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="text-success nav-link active h6" aria-current="page" 
+                    href="showFormForAdd">
+                    <!-- with buttons use: 
+                    onClick="window.location.href='showFormForAdd'; return false;"
+                     -->
+                     <i class="bi bi-person-plus-fill"> </i> Add a new customer</a>
+                  </li>
+                 
+                </ul>
+               <!--/links-->
+                <!--search-->
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" 
+                        placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                 <!--/search-->
             </div>
           </nav>
           <!--/nav-->
           <!--table-->
           <table id="tab" class="table table-light table-striped">
             <thead>
-              <tr >
+              <tr class="table-secondary">
                 <th scope="col">ID</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
@@ -51,7 +72,6 @@
             </thead>
             <tbody>
             <c:forEach var="c" items="${customers}">
-            	
            	 <tr>
                 <th scope="row" >${c.id }</th>
                 <td>${c.firstName}</td>

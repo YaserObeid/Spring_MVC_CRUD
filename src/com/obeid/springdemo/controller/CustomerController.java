@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.obeid.springdemo.dao.CustomerDAO;
 import com.obeid.springdemo.entity.Customer;
 import com.obeid.springdemo.service.CustomerService;
 
@@ -19,6 +20,8 @@ public class CustomerController {
 	// inject a customerService
 	@Autowired
 	private CustomerService customerService;
+	
+	
 	
 	//restrict this method to handle GET requesters
 	@GetMapping("/list")
@@ -32,4 +35,29 @@ public class CustomerController {
 		
 		return "customer-list";
 	}
+	
+	@GetMapping("/showFormForAdd")
+	public String showFormForAdd(Model model) {
+		
+		Customer customer = new Customer();
+		
+		model.addAttribute("customer", customer);
+		
+		return "customer-form";
+	}
+	
+	// add customer
+	
+	@PostMapping("/saveCustomer")
+	public String saveCustomer(
+			@ModelAttribute("customer")
+			Customer customer) {
+		
+		customerService.saveCustomer(customer);
+		
+		return "redirect:/customer/list";
+	}
+	
+	
+	
 }
