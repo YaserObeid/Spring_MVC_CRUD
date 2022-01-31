@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.obeid.springdemo.dao.CustomerDAO;
 import com.obeid.springdemo.entity.Customer;
 import com.obeid.springdemo.service.CustomerService;
 
@@ -32,4 +31,16 @@ public class CustomerController {
 		
 		return "customer-list";
 	}
+	
+	@GetMapping("/showFormForAdd")
+	public String showFormForAdd(Model model) {
+		
+		Customer customer = new Customer();
+		
+		model.addAttribute("customer", customer);
+		
+		return "customer-form";
+	}
+	
+	
 }
