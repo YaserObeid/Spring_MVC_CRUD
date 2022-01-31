@@ -31,6 +31,9 @@
   
   <table class="table table-borderless p-5">
   <form:form action="saveCustomer" modelAttribute="customer" method="POST">
+  		
+  		<!-- refer for the update customer by id -->
+  		<form:hidden path="id" />
  
   		<tr>
   			<td>
