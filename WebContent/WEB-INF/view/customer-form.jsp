@@ -30,7 +30,7 @@
   <div class="card w-75 my-5 p-5">
   
   <table class="table table-borderless p-5">
-  <form:form action="saveCustomer" modelAttribute="customer">
+  <form:form action="saveCustomer" modelAttribute="customer" method="POST">
  
   		<tr>
   			<td>
@@ -64,8 +64,7 @@
   			<i class="bi bi-box-arrow-left"></i> back
   			</td>
   			<td>
-  			<button type="button" class="btn btn-secondary">save customer</button>
-
+  			<input type="submit" value="save customer" class="btn btn-secondary">
   			</td>
   		</tr>
   </form:form>
