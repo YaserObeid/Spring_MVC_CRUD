@@ -22,12 +22,12 @@
     <title>Customer List</title>
   </head>
   <body class= bg-secondary>
-      <!--nav -->
+     
    
     
     <div id="bg" class="container bg-light py-3 mt-5">
     <i id="sw"  role="button" class="bi bi-moon-fill" onClick="dark()"> mode</i>
-   
+    <!--nav -->
         <nav id="nav" class="navbar navbar-light bg-light my-5">
             <div class="container-fluid">
               <a class="navbar-brand">Customer List</a>
