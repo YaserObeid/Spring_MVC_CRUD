@@ -7,6 +7,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.obeid.springdemo.entity.Customer;
+import com.obeid.springdemo.util.SortUtils;
 
 
 @Repository
@@ -19,16 +20,37 @@ public class CustomerDAOImpl implements CustomerDAO {
 	
 	// get list of all customers
 	@Override
-	public List<Customer> getCustomers() {
+	public List<Customer> getCustomers(int sortField) {
 		
 		// get current session
-		Session currentSession = 
-				sessionFactory.getCurrentSession();
+				Session currentSession = 
+						sessionFactory.getCurrentSession();
+		// switch to the provided sortFild
+		String fieldName;
+		
+		switch (sortField) {
+		case SortUtils.FIRST_NAME:
+				fieldName = "firstName";
+			break;
+		case SortUtils.LAST_NAME:
+			fieldName = "lastName";
+		break;
+		case SortUtils.EMAIL:
+			fieldName = "email";
+		break;
+
+		default:
+			fieldName = "lastName";
+			break;
+		}
+		
+		
 		
 		// create query to fetch the data
 		// import from 'org.hibernate.query.Query;'
 		Query<Customer> query = 
-				currentSession.createQuery("from Customer", Customer.class);
+				currentSession.createQuery("from Customer order by " + fieldName, Customer.class);
+		
 		
 		// Execute the query & get c customer list
 		

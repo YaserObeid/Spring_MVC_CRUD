@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
+<%@ page import="com.obeid.springdemo.util.SortUtils" %> 
 
 <!doctype html>
 <html lang="en">
@@ -63,14 +64,39 @@
           </nav>
           <!--/nav-->
           <!--table-->
+          
+          <!-- construct a sort link for first name -->
+			<c:url var="sortLinkFirstName" value="/customer/list">
+				<c:param name="sort" value="<%= Integer.toString(SortUtils.FIRST_NAME) %>" />
+			</c:url>
+		 <!-- construct a sort link for last name -->
+			 <c:url var="sortLinkLastName" value="/customer/list">
+			 	<c:param name="sort" value="<%= Integer.toString(SortUtils.LAST_NAME) %>"/>
+			 </c:url>	
+		 <!-- construct a sort link for last name -->
+		 	<c:url var="sortLinkEmail" value="/customer/list">
+	 			<c:param name="sort" value="<%= Integer.toString(SortUtils.EMAIL) %>"/>
+		 	</c:url>
+		 	
+		 	
+          
           <table id="tab" class="table table-light table-striped">
             <thead>
               <tr class="table-secondary">
                 <th scope="col">ID</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">E-Mail</th>
-                <th scope="col">Actions</th>
+                <th scope="col">
+                <a href="${sortLinkFirstName}">
+                <i class="bi bi-sort-alpha-down"></i></a> First Name
+                </th>
+                <th scope="col">
+                <a href="${sortLinkLastName}">
+                <i class="bi bi-sort-alpha-down"></i></a> Last Name
+                </th>
+                <th scope="col">
+                <a href="${sortLinkEmail}"><i class="bi bi-sort-alpha-down"></i></a> E-Mail
+                </th>
+                <th scope="col">Actions
+                </th>
               </tr>
             </thead>
             <tbody>
