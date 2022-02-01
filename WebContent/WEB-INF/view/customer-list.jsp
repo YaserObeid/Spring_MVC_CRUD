@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 
 <!doctype html>
 <html lang="en">
@@ -51,11 +52,12 @@
                 </ul>
                <!--/links-->
                 <!--search-->
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" 
-                        placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <form:form action="searchCustomers" method="GET" class="d-flex">
+                	<!-- name is the String parameter -->
+                  <input  type="text" name="searchedText" class="form-control me-2" 
+                        placeholder="Search" aria-label="Search"/>
+                  <input  type="submit" value="search ..." class="btn btn-outline-success"/>
+                </form:form>
                  <!--/search-->
             </div>
           </nav>
