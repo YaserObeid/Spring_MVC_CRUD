@@ -72,9 +72,16 @@
               </tr>
             </thead>
             <tbody>
+            
             <c:forEach var="c" items="${customers}">
+           
             <!-- create update link with parameter (customer id) -->
             <c:url var="updateLink" value="/customer/showFormForUpdate">
+            	<c:param name="customerId" value="${c.id}" />
+            </c:url>
+            
+            <!-- create delete link with parameter (customer id) -->
+            <c:url var="deleteLink" value="/customer/delete">
             	<c:param name="customerId" value="${c.id}" />
             </c:url>
            	 <tr>
@@ -83,7 +90,11 @@
                 <td>${c.lastName}</td>
                 <td>${c.email}</td>
                 <td>
-                <a href="${updateLink}" ><i class="text-success bi bi-pencil-square"></i></a>
+                <a title="update" href="${updateLink}" >
+                <i class="h6 text-success bi bi-pencil-square"></i></a> |     
+                <a title="delete" href="${deleteLink}" 
+                 onclick="return confirm('Do you want to delete this customer?');" >
+                <i class="h6 text-danger bi bi-folder-x"></i></a> 
                 </td>
               </tr>
             	
