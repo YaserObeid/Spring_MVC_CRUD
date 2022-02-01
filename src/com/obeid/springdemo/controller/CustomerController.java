@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.obeid.springdemo.entity.Customer;
 import com.obeid.springdemo.service.CustomerService;
+import com.obeid.springdemo.util.SortUtils;
 
 @Controller
 @RequestMapping("/customer")
@@ -26,10 +27,22 @@ public class CustomerController {
 	
 	//restrict this method to handle GET requesters
 	@GetMapping("/list")
-	public String customerList(Model model) {
+	public String customerList(Model model,
+								@RequestParam(required = false)
+								String sort) {
 		
-		// get customer from CustomerSevice
-		List<Customer> customers = customerService.getCustomers();
+		
+		List<Customer> customers = null;
+		// if sort is provided
+		if(sort != null) {
+			int sortField = Integer.parseInt(sort);
+			customers = customerService.getCustomers(sortField);
+		}
+		
+		// if sort is NOT provided
+		else {
+			customers = customerService.getCustomers(SortUtils.LAST_NAME);
+		}
 		
 		// add customer list to the model
 		model.addAttribute("customers", customers);
